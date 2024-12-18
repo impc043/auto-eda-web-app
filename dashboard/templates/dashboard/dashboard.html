@@ -1,0 +1,90 @@
+<h1>Dashboard</h1>
+
+{% if request.user.is_authenticated %}
+<h2>Welcome, {{ request.user.username }}</h2>
+
+{% for project_ in pro %}
+<div>
+    <p>{{ project_.project_file.url }}</p>
+    <p>{{ project_.created_date }}</p>
+</div>
+{% endfor %}
+<div>
+    {{gp_labels}}
+    {{gp_data}}
+</div>
+<div>
+
+    <style>
+        .divChart {
+            width: 750px;
+        }
+    </style>
+
+    <div class="divChart">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{labels|safe}},
+                datasets: [{
+                label: 'My Dataset',
+                data: {{data|safe}},
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+        }]
+            },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+        });
+    </script>
+</div>
+{% endif %}
+
+<!-- <style>
+    div {
+        width: 750px;
+    }
+</style>
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{labels|safe}},
+            datasets: [{
+                label: '# of Votes',
+                data: {{data|safe}},
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script> -->

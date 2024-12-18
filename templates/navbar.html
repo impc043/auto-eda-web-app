@@ -1,0 +1,136 @@
+{% load static %}
+<!-- <nav class="nav-container">
+    <div class="logo nav-item">
+        <a href="{% url 'home' %}">
+            <svg width="59" height="17" viewBox="0 0 59 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.120422 16.4836V0.907593H2.95242V16.4836H0.120422Z" fill="#7B61FF" />
+                <path
+                    d="M7.43292 0.907593H12.4729C14.0569 0.907593 15.4449 1.22759 16.6369 1.86759C17.8289 2.49959 18.7569 3.39959 19.4209 4.56759C20.0849 5.73559 20.4169 7.11559 20.4169 8.70759C20.4169 10.2836 20.0849 11.6556 19.4209 12.8236C18.7569 13.9836 17.8289 14.8836 16.6369 15.5236C15.4449 16.1636 14.0569 16.4836 12.4729 16.4836H7.43292V0.907593ZM10.2649 3.47559V13.9396H10.4237V12.9983H10.5493V13.6614H10.654V12.5794H10.8006V13.7651H10.9542V12.9354H11.1078V13.2136H11.2474V13.452H11.4149V13.9396H11.5266V12.1187H11.7221V13.9396H12.3803V11.6485C13.7213 11.6485 14.1366 13.7472 15.0769 13.2556C15.8129 12.7996 16.3769 12.1796 16.7689 11.3956C17.1689 10.6036 17.3689 9.70759 17.3689 8.70759C17.3689 7.69159 17.1689 6.79159 16.7689 6.00759C16.3769 5.22359 15.8129 4.60759 15.0769 4.15959C14.3489 3.70359 13.4809 3.47559 12.4729 3.47559H10.2649Z"
+                    fill="#7B61FF" />
+                <path
+                    d="M23.8855 16.4836V0.907593H33.8935V3.35559H26.7175V7.45959H33.4615V9.90759H26.7175V14.0116H33.8935V16.4836H23.8855Z"
+                    fill="#7B61FF" />
+                <path d="M37.9954 16.4836V0.907593H40.8274V16.4836H37.9954Z" fill="#7B61FF" />
+                <path
+                    d="M45.2599 0.907593H48.3559L55.4359 12.0196H55.2199V0.907593H58.0519V16.4836H55.1719L47.6359 4.69959H48.0919V16.4836H45.2599V0.907593Z"
+                    fill="#7B61FF" />
+            </svg>
+        </a>
+    </div>
+    <div class="links nav-item">
+        <li><a href="{% url 'user_info' %}">Home</a></li>
+        <li><a href="">How it works</a></li>
+        <li><a href="{% url 'dashboard_new' %}">Dashboard</a></li>
+    </div>
+    <div class="login-signup nav-item">
+        {% if request.user.is_authenticated %}
+        <button><a href="{% url 'logout' %}">Logout</a></button>
+        <button><a href="{% url 'user_update' %}">UpdateProfile</a></button>
+        {% else %}
+        <button class="btn btn-login"><a href="{% url 'login' %}">Login</a></button>
+        <button class="btn btn-register"><a href="{% url 'register' %}">Register</a></button>
+        {% endif %}
+    </div>
+</nav> -->
+
+<!-- <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a  href="{% url 'home' %}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Tailblocks</span>
+        </a>
+        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            <a href="{% url 'user_info' %}" class="mr-5 hover:text-gray-900">Home </a>
+            <a  class="mr-5 hover:text-gray-900">How its work</a>
+            <a href="{% url 'dashboard_new' %}" class="mr-5 hover:text-gray-900" href="dashboard.html">Dashboard</a>
+        </nav>
+        {% if request.user.is_authenticated %}
+        
+        <button
+            class="inline-flex items-center bg-violet-500 border-0 py-1 px-3 focus:outline-none hover:bg-violet-400 rounded text-white mt-4 mx-1 md:mt-0 "><a href="{% url 'logout' %}">Logout</a>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </button>
+      
+        <button
+            class="inline-flex items-center bg-violet-500 border-0 py-1 px-3 focus:outline-none hover:bg-violet-400 rounded text-white mt-4 mx-1 md:mt-0 ">  <a href="{% url 'user_update' %}">Update Profile</a>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    
+        {% else %}
+     
+        <button
+            class="inline-flex items-center bg-violet-500 border-0 py-1 px-3 focus:outline-none hover:bg-violet-400 rounded text-white mt-4 mx-1 md:mt-0 "><a href="{% url 'login' %}">Login</a>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    
+        <button
+            class="inline-flex items-center bg-violet-500 border-0 py-1 px-3 focus:outline-none hover:bg-violet-400 rounded text-white mt-4 mx-1 md:mt-0 "><a href="{% url 'register' %}">Registere</a>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </button>
+        
+        {% endif %}
+    </div>
+</header> -->
+
+
+<header class="header">
+    <div class="header-content responsive-wrapper">
+        <div class="header-logo">
+            <a href="{% url 'home' %}">
+                <div>
+                    <!-- <img src="https://assets.codepen.io/285131/untitled-ui-icon.svg" /> -->
+                    <p>Outlier</p>
+                </div>
+                <!-- <img src="https://assets.codepen.io/285131/untitled-ui.svg" /> -->
+            </a>
+        </div>
+        <div class="header-navigation">
+            <nav class="header-navigation-links">
+                <a href="{% url 'home' %}"> Home </a>
+                <a href="{% url 'user_info' %}"> Dashboard </a>
+                <a href="#"> Projects </a>
+            </nav>
+            <div class="header-navigation-actions">
+
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'user_update' %}" class="button">
+                    <i class="material-icons-outlined">edit</i>
+                    <span>Update Profile</span>
+                </a>
+                <a href="{% url 'logout' %}" class="button">
+                    <i class="material-icons-outlined">logout</i>
+                    <span>Logout</span>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="button">
+                    <i class="material-icons-outlined">logout</i>
+                    <span>Login</span>
+                </a>
+                <a href="{% url 'register' %}" class="button">
+                    <i class="material-icons-outlined">app_registration</i>
+                    <span>Register</span>
+                </a>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+</header>

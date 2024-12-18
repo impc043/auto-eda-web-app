@@ -1,0 +1,66 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- <h2>Register</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="Register" >
+</form> -->
+
+<div class="form-container">
+
+
+    <div class="flex justify-center bg-slate-0">
+        <div id="form" class="block bg-slate-40 p-6 rounded-xl shadow-md shadow-slate-30 w-90">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h2 class="text-purple-700 text-3xl font-semibold my-4">Register</h2>
+                <!-- <div id="fullName" class="flex flex-row">
+                    <div id="firstName" class="w-1/2 mr-1">
+                        <label for="fname" class="text-sm">First Name</label><br>
+                        <input type="text" name="" id="fname"
+                            class="h-8 w-full rounded-md border border-slate=300 text-sm pl-2 bg-transperent outline-blue-600 shadow-sm">
+                    </div>
+                    <div id="lastName" class="w-1/2 mr-1">
+                        <label for="lname" class="text-sm">Last Name</label><br>
+                        <input type="text" name="" id="lname"
+                            class="h-8 w-full rounded-md border border-slate=300 text-sm pl-2 bg-transperent outline-blue-600 shadow-sm">
+                    </div>
+                </div> -->
+                <label for="username" class="text-sm">Username</label><br>
+                <input type="text" name="username" id="username"
+                    class="h-8 w-full rounded-md border border-slate=300 text-sm pl-2 bg-transperent outline-blue-600 shadow-sm">
+                <label for="email" class="text-sm">Email</label><br>
+                <input type="email" name="email" id="email"
+                    class="h-8 w-full rounded-md border border-slate=300 text-sm pl-2 bg-transperent outline-blue-600 shadow-sm">
+
+                <label for="password" class="text-sm">Password</label><br>
+                <input type="password" name="password1" id="password"
+                    class="h-8 w-full rounded-md border border-slate=300 text-sm pl-2 bg-transperent outline-blue-600 shadow-sm">
+                <label for="confirmPassword" class="text-sm">Confirm Password</label><br>
+                <input type="password" name="password2" id="confirmPassword"
+                    class="h-8 w-full rounded-md border border-slate=300 text-sm pl-2 bg-transperent outline-blue-600 shadow-sm">
+                <input type="submit" name="Register" id="signUp"
+                    class="bg-violet-700 w-full h-10 rounded-md text-white cursor-pointer mt-5 hover:bg-violet-600">
+                <p class="text-sm my-2">Already have a account? <a class="text-violet-600" href="">Login</a></p>
+            </form>
+        </div>
+
+    </div>
+</div>
+<style>
+    .form-container{
+        display: flex;
+        width: 100vw;
+        height: 70vh;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- <div class="bg-black bg-opacity-50 absolute inset-0 flex  justify-center items-center" id="overlay">
+    <div class="bg-gray-200 max-w-sm py-2 px-3 rounded text-gray-800  ">
+        <div class="flex justify-between items-center">
+            <h4 class="text-lg font-bold ">Confirm Delete?</h4>
+            <span class="material-icons-outlined cursor-pointer hover:bg-gray-400 rounded-full " id="close-btn">close</span>
+        </div>
+        <div class="mt-2">
+            <p>This will completely remove your {{project_name}} project, and will not able to reflect on your dashboard.</p>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="mt-3 flex justify-end space-x-3">
+                <a href="{% url 'home' %}"><button class="px-3 py-1 hover:bg-red-300 hover:bg-opacity-50 hover:text-red-900 rounded">Cancel</button></a>
+                <button class="px-3 py-1 bg-red-800 hover:bg-red-600 text-gray-200 rounded">Delete</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+
+<div class="bg-black bg-opacity-50 absolute inset-0 flex  justify-center items-center" id="overlay">
+    <div class="bg-gray-200 max-w-sm py-2 px-3 rounded text-gray-800  ">
+        <div class="flex justify-between items-center">
+            <h4 class="text-lg font-bold ">Confirm Delete?</h4>
+            <span class="material-icons-outlined cursor-pointer hover:bg-gray-400 rounded-full " id="close-btn">close</span>
+        </div>
+        <div class="mt-2">
+            <p>This will completely remove your '{{project_name}}' project, and will not be able to reflect on your dashboard.</p>
+        </div>
+
+        <div class="mt-3 flex justify-end space-x-3">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <a href="{% url 'user_info' %}" class="px-3 py-1 hover:bg-red-300 hover:bg-opacity-50 hover:text-red-900 rounded">Cancel</a>
+                <input type="submit" name="Delete" class="px-3 py-1 bg-red-800 hover:bg-red-600 text-gray-200 rounded">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

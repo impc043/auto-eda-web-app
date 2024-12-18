@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --c-text-primary: #282a32;
+  --c-text-secondary: #686b87;
+  --c-text-action: #404089;
+  --c-accent-primary: #434ce8;
+  --c-border-primary: #eff1f6;
+  --c-background-primary: #ffffff;
+  --c-background-secondary: #fdfcff;
+  --c-background-tertiary: #ecf3fe;
+  --c-background-quaternary: #e9ecf4;
+}
+
+
+:focus {
+  outline: 0;
+}
+
+
+.list-style-none{
+  list-style: none; 
+}
+
+.button {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1em;
+  margin: 0 10px;
+  height: 40px;
+  border-radius: 8px;
+  line-height: 1;
+  border: 2px solid var(--c-border-primary);
+  color: var(--c-text-action);
+  font-size: 0.875rem;
+  transition: 0.15s ease;
+  background-color: var(--c-background-primary);
+}
+.button i {
+  margin-right: 0.5rem;
+  font-size: 1.25em;
+}
+.button span {
+  font-weight: 500;
+}
+.button:hover, .button:focus {
+  border-color: var(--c-accent-primary);
+  color: var(--c-accent-primary);
+}
+
+.icon-button {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: var(--c-text-action);
+  transition: 0.15s ease;
+}
+.icon-button i {
+  font-size: 1.25em;
+}
+.icon-button:focus, .icon-button:hover {
+  background-color: var(--c-background-tertiary);
+  color: var(--c-accent-primary);
+}
+
+
+
+.align-self-center{
+  align-self: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: auto;
+  width: auto;
+  margin: 1rem 5rem;
+  column-gap: 18px;
+  padding: 10px 10px;
+
+}
+
+.side-bar-dash {
+  display: flex;
+  justify-self: center;
+  padding: 10px;
+}
+
+
+.side-bar-list-p{
+    display: flex;
+    flex-direction: row;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.side-bar-list-item-p {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-self-center-p{
+    display: flex;
+    margin: 10px;
+}
+
+.main-container-p {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.main-title-p{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+.main-cards-p {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+
+.basic-details-cards-p{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.card-p {
+  background-color: var(--c-background-primary);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 282px;
+  margin: 10px;
+}
+
+.card-inner-p{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+}
+
+.inner-card-heading-p{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.inner-card-content-p{
+    display: flex;
+    margin-top: 10px;
+}
+
+.card-inner-p>p {
+  font-size: 18px;
+}
+
+.card-inner-p>span {
+  font-size: 25px;
+}
+
+.card-p>span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.chart-container-flex {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+}
+
+
+
+.card-uni {
+  background-color: var(--c-background-primary);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 550px;
+  margin: 10px;
+} 
+#univariate #bivariate #multivariate > h2{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.null_col_chart{
+    width: 720px;
+}
+.uni-bar-chart {
+    width: 468px;
+}
+.uni-hist-chart {
+    width: 550px;
+}
+
+.bi-box-chart {
+    width: 468px;
+}
+

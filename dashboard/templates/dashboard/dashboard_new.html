@@ -1,0 +1,26 @@
+<h1>Dashboard</h1>
+
+
+
+<style>
+    .home-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+</style>
+
+<div class="home-container">
+    <div>
+        {% for proj in pro %}
+        <p><a href="{% url 'user_project' proj.id %}">{{ proj.project_name }}</a></p>
+        {% endfor %}
+    </div>
+
+ 
+
+    <div>
+        {% include 'dashboard/insight.html' %}
+
+    </div>
+
+</div>

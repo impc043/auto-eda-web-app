@@ -1,0 +1,76 @@
+.hero {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+#background {
+    background-image: url('/static/images/main_home.svg');
+    background-size: cover;
+    position: absolute;
+    width: 858px;
+    height: 785px;
+    right: 0px;
+    top: 0px;
+    z-index: -1;
+    
+    
+  }
+
+.tagline {  
+display: flex;
+}
+
+.about-user-info{
+  display: flex;
+  flex-direction: row;
+  /* background-color: aqua; */
+  margin: 12px 64px 0px 64px;
+}
+
+#sidebar{
+  padding: 10px;
+  width: 313px;
+  height: 683.57px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
+#user-body{
+  padding: 10px;
+  width: 979px;
+  height: 736px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+
+.usr-div{
+  width: 280px;
+  height: 44.25px;
+} 
+.user-profile-pic{
+  height: 75px;
+  width: 75px;
+  object-fit: cover;
+}
+.dash-flex{
+  display: flex;
+  padding: 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dash-item{
+  background: #F2EFFF;
+  border: 1px solid #7B61FF;
+  border-radius: 10px;
+  padding: 10px;
+  width: auto;
+}
+
+.usr-body-head{
+  display: flex;
+  flex-direction: column-reverse;
+}
+

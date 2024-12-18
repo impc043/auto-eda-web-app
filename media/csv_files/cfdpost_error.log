@@ -1,0 +1,4 @@
+ 2021/10/26 13:21:41 
+CCLAPI::validateCCLData - CCL validation failed with message:
+Error: The essential parameter 'Location List' is missing from /STREAMLINE:Streamline 1
+

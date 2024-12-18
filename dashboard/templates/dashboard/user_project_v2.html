@@ -1,0 +1,291 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+
+{% if request.user.is_authenticated %}
+<div class="grid-container">
+
+    <aside class="side-bar-dash">
+
+        <div class="sidebar-list-p">
+            <h1 class="heading">Dashboard</h1>
+            <div class="side-bar-list-item-p">
+                <button onclick="smoothScroll(document.getElementById('univariate'))"><p class="justify-self-center-p" ><span class="material-icons-outlined">poll</span>Univariate</p></button>
+
+                <button onclick="smoothScroll(document.getElementById('bivariate'))"><p class="justify-self-center-p" ><span class="material-icons-outlined">poll</span>Bivariate</p></button>
+                <button onclick="smoothScroll(document.getElementById('multivariate'))"><p class="justify-self-center-p" ><span class="material-icons-outlined">poll</span>Multivariate</p></button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-container-p">
+
+        <!-- upper title -->
+        <div class="main-title-p">
+            <p class="font-weight-bold">{{project_name}}</p>
+            <div><a href="{% url 'create_project' %}" class="button">
+                    <i class="material-icons-outlined">add</i>
+                    <span>Create</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Basic detail -->
+        <div class="main-cards-p">
+            <div>
+                <h2>Basic Details</h2>
+            </div>
+            <div class="basic-details-cards-p">
+                <div class="card-p">
+                    <div class="card-inner-p">
+                        <div class="inner-card-heading-p">
+                            <p class="text-primary">Data shape</p>
+                            <span class="material-icons-outlined">details</span>
+                        </div>
+                        <span class="text-primary font-weight-bold">{{basic_data_details.data_shape}}</span>
+                    </div>
+                </div>
+
+                <div class="card-p">
+                    <div class="card-inner-p">
+                        <div class="inner-card-heading-p">
+                            <p class="text-primary">Feature's Dtype</p>
+                            <span class="material-icons-outlined">handyman</span>
+                        </div>
+
+                        <div class="inner-card-content-p">
+                            <div class="right-border">
+                                <p style="font-size: 0.8rem;">Numerical columns </p><span class="text-primary font-weight-bold">{{basic_data_details.num_col_shape}}</span>
+                            </div>
+                            <div class="right-border">
+                                <p style="font-size: 0.8rem;">Categorical columns </p><span class="text-primary font-weight-bold">{{basic_data_details.cat_col_shape}}</span>
+                            </div>
+                            <div class="right-border">
+                                <p style="font-size: 0.8rem;">Datetime columns </p><span class="text-primary font-weight-bold">{{basic_data_details.datetime_col_shape}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-p">
+                    <div class="card-inner-p">
+                        <div class="inner-card-heading-p">
+                            <p class="text-primary">Null Count</p>
+                            <span class="material-icons-outlined">incomplete_circle</span>
+                        </div>
+                        <span class="text-primary font-weight-bold">{{basic_data_details.null_counts}}</span>
+                    </div>
+
+                </div>
+
+                <div class="card-p">
+                    <div class="card-inner-p">
+                        <div class="inner-card-heading-p">
+                            <p class="text-primary">Duplicate Records</p>
+                            <span class="material-icons-outlined">content_copy</span>
+                        </div>
+                        <span class="text-primary font-weight-bold">{{basic_data_details.duplicate_records}}</span>
+                    </div>
+
+                </div>
+           
+
+            </div>
+
+        </div>
+
+        <!-- univariate -->
+        <div class="univariate-card ">
+            <div id="univariate">
+                <h2>Univariate</h2>
+            </div>
+            
+            <div class="chart-container-flex">
+                {% if null_count_chart %}
+                <div  class=" null_col_chart">
+                        <div class="divChart">
+                            <canvas id="myChart_null"></canvas>
+                        </div>
+                    
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    
+                        <script>
+                            var ctx = document.getElementById('myChart_null').getContext('2d');
+                    
+                            var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: {{ null_count_chart.labels | safe }},
+                            datasets: [{
+                                label: 'Null Count',
+                                data: {{ null_count_chart.data | safe }},
+                                backgroundColor: ['rgba(255, 99, 132, 0.2)',
+                                                    'rgba(255, 159, 64, 0.2)',
+                                                    'rgba(255, 205, 86, 0.2)',
+                                                    'rgba(75, 192, 192, 0.2)',
+                                                    'rgba(54, 162, 235, 0.2)',
+                                                    'rgba(153, 102, 255, 0.2)',
+                                                    'rgba(201, 203, 207, 0.2)'
+                                                    ],
+                                borderColor: borderColor: ['rgb(255, 99, 132)',
+                                                        'rgb(255, 159, 64)',
+                                                        'rgb(255, 205, 86)',
+                                                        'rgb(75, 192, 192)',
+                                                        'rgb(54, 162, 235)',
+                                                        'rgb(153, 102, 255)',
+                                                        'rgb(201, 203, 207)'
+                                                        ],
+                                borderWidth: 1
+                                }]
+                                    },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                                });
+                        </script>         
+                </div>
+                {% endif %}
+
+                {% for feature, values in univariate_barchart_dict.items %}
+                <div  class="card-uni uni-bar-chart">                   
+                    <div class="divChart">
+                        <canvas id="myChart{{feature}}"></canvas>
+                    </div>
+
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                    <script>
+                        var ctx = document.getElementById('myChart{{feature}}').getContext('2d');
+
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: {{ values.labels | safe }},
+                        datasets: [{
+                            label: '{{feature}}',
+                            data: {{ values.data | safe }},
+                            backgroundColor: ['rgba(255, 99, 132, 0.2)',
+                                                    'rgba(255, 159, 64, 0.2)',
+                                                    'rgba(255, 205, 86, 0.2)',
+                                                    'rgba(75, 192, 192, 0.2)',
+                                                    'rgba(54, 162, 235, 0.2)',
+                                                    'rgba(153, 102, 255, 0.2)',
+                                                    'rgba(201, 203, 207, 0.2)'
+                                                    ],
+                            borderColor: ['rgb(255, 99, 132)',
+                                                        'rgb(255, 159, 64)',
+                                                        'rgb(255, 205, 86)',
+                                                        'rgb(75, 192, 192)',
+                                                        'rgb(54, 162, 235)',
+                                                        'rgb(153, 102, 255)',
+                                                        'rgb(201, 203, 207)'
+                                                        ],
+                            borderWidth: 1
+                            }]
+                                },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                            });
+                    </script>
+                </div>
+                {% endfor%}
+
+                {% for violin_chart in univariate_violinchart_ls %}
+                <div class="card-uni ">
+                    {% autoescape off %}
+                    {{violin_chart}}
+                    {% endautoescape %}
+                </div>
+                {% endfor %}
+
+                {% for hist_chart in univariate_histchart_ls %}
+                <div class="card-uni uni-hist-chart">
+                    {% autoescape off %}
+                    {{hist_chart}}
+                    {% endautoescape %}
+                </div>
+                {% endfor %} 
+
+            </div>
+      
+        </div>
+
+        <!-- Bivariate -->
+        <div class="bivariate-card">
+            <div id="bivariate">
+                <h2>Bivariate</h2>
+            </div>
+
+            <div class="chart-container-flex">
+                    {% for box_chart in bivariate_boxchart_ls %}
+                    <div class="card-uni bi-box-chart">
+                        {% autoescape off %}
+                        {{box_chart}}
+                        {% endautoescape %}
+                    </div>
+                    {% endfor %}  
+            </div>
+        </div>
+        <!-- Multivariate -->
+        <div class="multivariate-card">
+            <div id="multivariate">
+                <h2>Multivariate</h2>
+            </div>
+
+            <div class="chart-container-flex">
+                    {% for scatter_chart in scatterchart_ls %}
+                    <div class="card-uni ">
+                        {% autoescape off %}
+                        {{scatter_chart}}
+                        {% endautoescape %}
+                    </div>
+                    {% endfor %}  
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    window.smoothScroll = function (target) {
+        var scrollContainer = target;
+        do { //find scroll container
+            scrollContainer = scrollContainer.parentNode;
+            if (!scrollContainer) return;
+            scrollContainer.scrollTop += 1;
+        } while (scrollContainer.scrollTop == 0);
+
+        var targetY = 0;
+        do { //find the top of target relatively to the container
+            if (target == scrollContainer) break;
+            targetY += target.offsetTop;
+        } while (target = target.offsetParent);
+
+        scroll = function (c, a, b, i) {
+            i++; if (i > 30) return;
+            c.scrollTop = a + (b - a) / 30 * i;
+            setTimeout(function () { scroll(c, a, b, i); }, 20);
+        }
+        // start scrolling
+        scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+    }
+</script>
+
+
+{% endif %}
+{% endblock content %}
